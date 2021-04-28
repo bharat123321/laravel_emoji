@@ -1,0 +1,137 @@
+li {
+            list-style: none;
+        }
+
+        .user-wrapper, .message-wrapper {
+            border: 1px solid #dddddd;
+            overflow-y: auto;
+        }
+
+        .user-wrapper {
+            height: 600px;
+        }
+        .user_space{
+            margin: 15px;
+        }
+        .user {
+           position: relative;
+           left: -20px;
+            cursor: pointer;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .user:hover {
+            background: #eeeeee;
+        }
+
+        .user:last-child {
+            margin-bottom: 0;
+        }
+
+        .pending {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background: #b600ff;
+            margin: 0;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            padding-left: 5px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+        .online{
+          position: absolute;
+            left: 0px;
+            top: 0px;
+            background: green;
+            margin: 0;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            padding-left: 5px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        .media-left {
+            margin: 0 10px;
+        }
+
+        .media-left img {
+            width: 64px;
+            border-radius: 64px;
+        }
+
+        .media-body p {
+            margin: 6px 0;
+        }
+         .message-wrapper {
+            padding: 10px;
+            height: 536px;
+            background: white;
+            border-radius:10px 10px;
+        }
+        .message-wrappered {
+            padding: 10px;
+            height: 536px;
+            background: #eeeeee;
+        }
+        .message-wrap{
+          padding: 10px;
+            height: 536px;
+            background: white;
+            border-radius:10px 10px;
+        }
+        .messages .message {
+            margin-bottom: 15px;
+        }
+     
+        .messages .messagess{
+            margin-bottom: 0;
+        }
+       .messages .mess{
+          margin-bottom: 15px;
+        }
+        .received, .sent {
+             display: inline-block;
+            padding: 4px 6px;
+            border-radius: 20px;
+        }
+
+        .received {
+            background: black;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-left:40px;
+        }
+
+        .sent {
+            background:skyblue;
+            float: right;
+            text-align: right;
+            color:white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+
+
+        .message p {
+            margin: 5px 0;
+        }
+
+        .date {
+            color: #777777;
+            font-size: 12px;
+        }
+
+        .active {
+            background: skyblue;
+        }

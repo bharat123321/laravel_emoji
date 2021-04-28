@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title style="color:red;font-weight: bold">BO Chatting</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/icon" href="upload/image/title_design.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/designs.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/messagedesign.css') }}">
+
+</head>
+<body>
+
+  <div class="allMyindex">
+
+    <div class="nav">
+       
+      <div class="search">
+        <form method="get" id="form-data">
+          
+         <input type="text" name="search"  onkeyup="document.getElementById('showsearch').style.display='block'" style="width:auto"; placeholder="Search" id="search_people" class="search_che">
+          
+       </form>
+ </div>
+ 
+   <a href="/showAll_image">  <img src="/uploads/avatar/{{Auth::user()->avatar}}" class="profile_design"></a>
+
+  <a href="#" class="dropbtn" onclick="document.getElementById('mydropdown').style.display = 'block'"> {{ucwords(Auth::user()->firstname )}}<span class="caret"></span> </a>
+   <div class="dropdown" id="mydropdown">
+
+<!-- friend request -->
+    <a href="{{url('/friend_request')}}">My Requests  <span style="color:green; font-weight:bold;font-size:16px">({{App\friendship::where('status', Null)->where('acceptor', Auth::user()->id)->count()}})</span></a>
+    <!-- ending friend request -->
+    <a href="{{ url('/post')}}">Post</a> 
+    <a href="{{ url('/profile')}}">Change Profile</a>
+    <!-- logout -->
+    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+   document.getElementById('logout-form').submit();"> Logout  </a>
+
+   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">  {{ csrf_field() }}  </form>
+<!-- ending logout --> 
+   </div>
+      <img src="upload/image/ho.jpg"  class="home_design" onclick="homeclick()" onmouseover="homeover()" onmouseout="homeout()" >   
+     <img src="upload/image/addfriend.jpg"  class="add_friend_design" onclick="addclick()" onmouseover="addfriendover()" onmouseout="addfriendout()"> 
+     <?php   $v = App\friendship::where('status', Null)->where('acceptor', Auth::user()->id)->count(); ?> 
+      <span class="number_of_friend_request"><b> ({{App\friendship::where('status', Null)->where('acceptor', Auth::user()->id)->count()}})  </b> </span>  
+      <img src="upload/image/notification.jpg"  class="notification_design" onclick="notifyclick()" onmouseover="notifover()" onmouseout="notifout()">
+       
+      <span class="number_of_notifcation"><b>
+      <?php   $like_count = App\notify::where('like_status',1)->where('replies_user_id',Auth::user()->id)->count();
+        $comment_count = App\notify::where('comment_status',1)->where('replies_user_id',Auth::user()->id)->count();
+        $add_like_comment = $like_count + $comment_count;
+       ?>
+       ({{$add_like_comment}}) </b> </span>
+             
+
+        <img src="upload/image/mess.jpg"  class="messenger_design" onclick="messengerclick()" onmouseover="messengerover()" onmouseout="messengerout()">  
+
+     </div>
+  
+       <?php  $user = Auth::user();   ?>
+     
+        @if (Auth::guest())
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                            @else
+                            <div id="showsearch"> 
+       </div>
+       <div class="allMyhome">
+      <div class="hellow">
+ <img src='upload/image/loading.gif' style="position: relative;left: 30%; display: none;" id="loading">
+ 
+        @if($post->count() > 0)
+        @foreach ($post as $post)
+      
+        @if(Auth::user()->id == $post->user_id) 
+
+      <div class="col-md-6">
+         <div class="panel">
+        <div class="well">
+         
+               
+     <a href="/showAll_image"> <img src="/uploads/avatar/{{$user->avatar}}" style="width:50px; height:50px; float:left; border-radius:50%;  "></a>
+                     
+                  <h2 class="text_of_user" style="color:black;"><b>{{strtoupper($user->firstname)}}</b></h2>
+                   {{ $post->formattedCreatedDate() }} 
+                   <br>
+            <div style="margin-left:10px;">
+                       <hr>
+                       @if($post->body != '')
+                    <h2 class="text_of_user">{{$post->body}}</h2>
+                   @endif
+                   @if($post->image != '')
+        <?php 
+                      $p_c = $post->count;
+                        $ex = explode(",", $post->image);
+                      
+                     // if(count($ex) == $post->count){
+                       if($post->count > 3){ 
+                      for ($i=0; $i <= 2; $i++) { 
+                           
+                     
+                    // foreach( explode(",", $post->image)as $images ){
+                       ?>
+
+                  <a href="/showfullimage/{{$post->id}}" style="text-decoration: none;"> <img src="/uploads/image/{{$ex[$i]}}" class="show_multiple_image"> </a>  
+
+                   
+<?php
+  $ch = $p_c - 3;
+}?>
+<a href="/showfullimage/{{$post->id}}" style="text-decoration: none;">
+       <img src="/uploads/image/{{$ex[$i]}}"style="border:1px solid gray; width:120px; height: 120px;position:relative; top:0px; left:10px;  margin:auto 0px; border-radius:10px;opacity:0.5;">
+       @if($ch < 9)
+       <span class="count_number_of_image">+{{$ch}}</span>
+      @else
+<span class="count_number_of_imageses">+{{$ch}}</span>
+@endif
+     </a><hr>
+<?php }
+if($post->count <= 3 and $post->count ==3){
+foreach( explode(",", $post->image)as $images ){
+ ?>
+<a href="#" style="text-decoration: none;"><img src="/uploads/image/{{$images}}"  class="show_upto_three_image" ></a>
+<?php }
+}
+if($post->count <=2 and $post->count == 2){
+  foreach( explode(",", $post->image)as $images ){
+ ?>
+<img src="/uploads/image/{{$images}}"  style="position: relative;width:300px;height: 300px;">
+<?php }
+}
+if($post->count <=1 and $post->count == 1){
+  foreach( explode(",", $post->image)as $images ){
+ ?>
+<img src="/uploads/image/{{$images}}"  style="position: relative;   width:100%;height:100%;">
+<?php }
+}
+?>
+ 
+     @endif
+                 @if($post->video != '')
+            <?php 
+            $p_c = $post->count_video;
+            $exs = explode(",", $post->video);
+            if($post->count_video > 3){ 
+           for ($i=0; $i <= 1; $i++) { 
+            // foreach( explode(",", $post->video)as $videos ){
+            
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$exs[$i]}}" type="video/mp4">  
+    
+</video> 
+<?php
+  $chs = $p_c - 2;
+}?><a href="/showfullvideo/{{$post->id}}"><span class="count_number_of_video"><span id="video_click" style="display: block;">click here</span><span id="count_video">+{{$chs}}</span></span></a>
+           <hr>
+          
+<?php }
+ if($post->count_video <= 3 and $post->count_video == 3){ 
+  foreach( explode(",", $post->video)as $videos ){
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+if($post->count_video <= 2 and $post->count_video == 2){ 
+  foreach( explode(",", $post->video)as $videos ){
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+  if($post->count_video <= 1 and $post->count_video == 1){ 
+  foreach( explode(",", $post->video)as $videos ){
+              ?>
+         <video width="100%" height="100%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+      ?>
+@endif   
+</div>
+  
+                 <br>
+                 <div class="user_like_comment">
+                    <?php  $checks = DB::table('likes')->where('post_id',$post->id)->where('user_id',Auth::user()->id)->first();
+                           if($checks== ''){ 
+
+                     ?>
+                    
+           <span class="badge liked" id="{{$post->id}}"  style="position: relative;top:0px; cursor: pointer;">Liked {{$post->getlikes($post->id)}}</span> 
+<hr>       
+       
+         
+          <span id="{{$post->id}}" class="btn-btn-primary likessy" data-post="{{$post->body}}" style="position: relative;top:0px;left:-30px;text-decoration: none;" >Like</span>   
+
+  <?php } else{ ?>
+
+                    <span class="badge liked" id="{{$post->id}}">Liked {{$post->likes->count()}} </span>  
+                    <hr>
+                     
+     <span id="{{$post->id}}" class="btn-btn-primary likessy" data-post="{{$post->body}}" data-user="{{Auth::user()->id}}" style="position:relative;top:0px;left:-30px;">You like this post</span>                                                                                    <?php } ?>
+                  <span class="btn-danger dislike" id="{{$post->id}}" data-type="dislike" style="position:relative;top:0px;left:-40px; ">Dislike</span> 
+               <?php 
+             $showreplies = DB::table('replies')->where('post_id',$post->id)->count();    
+          $count_comment = DB::table("comments")->where('post_id',$post->id)->count();
+          $add = $showreplies + $count_comment;
+                 ?>  
+                    <!-- <a href="{{url('/comment/'.$post->id)}}"> -->
+                    <span class="btn-btn-secondary commented" id="{{$post->id}}">Comment {{$add}} </span> 
+                  <!-- </a> -->
+                      
+                         <!--  Get the total number of views   -->
+                    <!--  <a href="{{url('postview/'.$post->id.'/')}}">{{$post->postview->count()}}</a> ; -->
+                    
+                  
+
+<!-- comment -->
+<form   method="post" action="{{ route('comments.store') }}" >
+                                   {{  csrf_field() }}
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" >
+                         <input type="hidden" name="firstname" value="{{$post->user->firstname}}">
+                         <input type="hidden" name="lastname" value="{{$post->user->lastname}}">
+                        <input type="hidden" name="post_id" value="{{ $post->id }}" > 
+                        <input type="hidden" name="post_body" value="{{$post->body}}">
+                         
+                        <div class="row" style="padding: 10px;">
+                            <div class="form-group">
+                              <span style="position:relative;top:0px">   <textarea class="form-control" name="comment" placeholder="Write something from your heart..!"></textarea></span>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 0 10px 0 10px;">
+                            <div class="form-group">
+                                <input type="submit" class="btn-btn-primary btn-lg" style="position:relative;top:0px"  value="Comment">
+                                
+                            </div>
+                        </div>
+                    </form>
+        </div>
+        </div>
+         </div>
+          </div> 
+          
+      @endif
+            @endforeach 
+             <!-- user completed -->
+    
+       @foreach ($friends as $friends)
+       @if($friends->body != '' || $friends->image != '' || $friends->video != '')
+        @if($friends->user_requested == Auth::user()->id) 
+     
+      <div class="col-md-6">
+         <div class="panel">
+        <div class="well">
+         
+      <a href="/showAll_image_ofFriend/{{$friends->acceptor}}">         
+      <img src="/uploads/avatar/{{$friends->avatar}}" style="width:50px; height:50px; float:left; border-radius:50%;"></a>
+                      
+                  <h2 class="text_of_user" style="color:black;">
+                     <b>{{strtoupper($friends->firstname)}}</b></h2>
+                   {{\Carbon\Carbon::parse($friends->created_at)->diffForHumans()}}
+                   <br>
+            <div style="margin-left:10px;">
+                       <hr>
+                    <h2 class="text_of_user">{{$friends->body}}</h2>
+                   
+                   @if($friends->image != '')
+        <?php 
+                      $p_c = $friends->count;
+                        $ex = explode(",", $friends->image);
+                      
+                     // if(count($ex) == $post->count){
+                       if($friends->count > 3){ 
+                      for ($i=0; $i <= 2; $i++) { 
+                           
+                     
+                    // foreach( explode(",", $post->image)as $images ){
+                       ?>
+
+                  <a href="/showfullimage/{{$friends->id}}" style="text-decoration: none;"> <img src="/uploads/image/{{$ex[$i]}}" class="show_multiple_image"> </a>  
+
+                   
+<?php
+  $ch = $p_c - 3;
+}?>
+<a href="/showfullimage/{{$friends->id}}" style="text-decoration: none;">
+        <img src="/uploads/image/{{$ex[$i]}}"style="border:1px solid gray; width:120px; height: 120px;position:relative; top:0px; left:10px;  margin:auto 0px; border-radius:10px;opacity:0.5;"><!-- <span class="count_number_of_friend_image">+{{$ch}}</span> -->
+ @if($ch < 9)
+       <span class="count_number_of_image">+{{$ch}}</span>
+      @else
+<span class="count_number_of_imageses">+{{$ch}}</span>
+@endif
+      </a><hr>
+<?php }
+if($friends->count <= 3 and $friends->count ==3){
+foreach( explode(",", $friends->image)as $images ){
+ ?>
+<a href="#" style="text-decoration: none;"><img src="/uploads/image/{{$images}}"  class="show_upto_three_image" ></a>
+<?php }
+}
+if($friends->count <=2 and $friends->count == 2){
+  foreach( explode(",", $friends->image)as $images ){
+ ?>
+<img src="/uploads/image/{{$images}}"  style="position: relative;width:300px;height: 300px;">
+<?php }
+}
+if($friends->count <=1 and $friends->count == 1){
+  foreach( explode(",", $friends->image)as $images ){
+ ?>
+<img src="/uploads/image/{{$images}}"  style="position: relative;   width:100%;height:100%;">
+<?php }
+}
+?>
+ 
+     @endif
+                 @if($friends->video != '')
+            <?php 
+            $p_c = $friends->count_video;
+            $exs = explode(",", $friends->video);
+            if($friends->count_video > 3){ 
+           for ($i=0; $i <= 1; $i++) { 
+            // foreach( explode(",", $post->video)as $videos ){
+            
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$exs[$i]}}" type="video/mp4">  
+    
+</video> 
+<?php
+  $chs = $p_c - 2;
+}?>
+<a href="/showfullvideo/{{$friends->id}}"><span class="count_number_of_video" ><span id="video_click" style="display:block;">click here</span><span id="count_video">+{{$chs}}</span></span></a>
+           <hr>
+          
+<?php }
+if($friends->count_video <= 3 and $friends->count_video == 3){ 
+  foreach( explode(",", $friends->video)as $videos ){
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+ 
+if($friends->count_video <= 2 and $friends->count_video == 2){ 
+  foreach( explode(",", $friends->video)as $videos ){
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+  if($friends->count_video <= 1 and $friends->count_video == 1){ 
+  foreach( explode(",", $friends->video)as $videos ){
+              ?>
+         <video width="100%" height="100%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+      ?>
+@endif   
+</div>
+  
+                 <br>
+                 <div class="user_like_comment">
+                    <?php  $checks = DB::table('likes')->where('post_id',$friends->id)->where('user_id',Auth::user()->id)->first();
+                           if($checks== ''){ 
+
+                     ?>
+                    
+           <span class="badge liked" id="{{$friends->id}}" style="position: relative;top:0px; cursor: pointer;">Liked {{$post->getlikes($friends->id)}}</span> 
+<hr>       
+       
+         
+          <span id="{{$friends->id}}" class="btn-btn-primary likessy"data-post="{{$friends->body}}"data-user="{{ $friends->acceptor}}" style="position: relative;top:0px;left:-30px;text-decoration: none;" >Like</span>   
+
+  <?php } else{ ?>
+
+                    <span class="badge liked" id="{{$friends->id}}">Liked {{$countlike->where('post_id',$friends->id)->count()}} </span>  
+                    <hr>
+                     
+                  <span id="{{$friends->id}}" class="btn-btn-primary likessy" data-post="{{$friends->body}}" data-user="{{ $friends->acceptor}}" style="position:relative;top:0px;left:-30px;">You like this post</span>                                                                                    <?php } ?>
+                  <span class="btn-danger dislike" id="{{$friends->id}}" data-type="dislike" style="position:relative;top:0px;left:-40px; ">Dislike</span> 
+                  <?php 
+             $showreplies = DB::table('replies')->where('post_id',$friends->id)->count();    
+          $count_comment = DB::table("comments")->where('post_id',$friends->id)->count();
+          $add = $showreplies + $count_comment;
+                 ?>
+                 
+                    <a href="{{url('/comment/'.$friends->id)}}"><span class="btn-btn-secondary comments">Comment{{$add}}  </span></a>
+                      <!-- $countComment->where('post_id',$friends->id)->count()-->
+                         <!--  Get the total number of views   -->
+                    <!--  <a href="{{url('postview/'.$post->id.'/')}}">{{$post->postview->count()}}</a> ; -->
+                    
+                  
+
+<!-- comment -->
+<form   method="post" action="{{ route('comments.store') }}" >
+                                   {{  csrf_field() }}
+                        <input type="hidden" name="user_id" value="{{ $friends->acceptor}}" >
+                         <input type="hidden" name="firstname" value="{{Auth::user()->firstname}}">
+                         <input type="hidden" name="lastname" value="{{Auth::user()->lastname}}">
+                         <input type="hidden" name="post_id" value="{{ $friends->id }}" >
+                          <input type="hidden" name="post_body" value="{{$friends->body}}">
+                         
+                        <div class="row" style="padding: 10px;">
+                            <div class="form-group">
+                              <span style="position:relative;top:0px">   <textarea class="form-control" name="comment" placeholder="Write something from your heart..!"></textarea></span>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 0 10px 0 10px;">
+                            <div class="form-group">
+                                <input type="submit" class="btn-btn-primary btn-lg" style="position:relative;top:0px"  value="Comment">
+                                
+                            </div>
+                        </div>
+                    </form>
+        </div>
+        </div>
+         </div>
+          </div> 
+          @endif
+            <!-- This much for user_requessted -->
+             <!-- From here acceptor -->
+                   @if($friends->acceptor == Auth::user()->id) 
+     
+      <div class="col-md-6">
+         <div class="panel">
+        <div class="well">
+         
+    <a href="/showAll_image_ofFriend/{{$friends->user_requested}}">           
+      <img src="/uploads/avatar/{{$friends->avatar}}" style="width:50px; height:50px; float:left; border-radius:50%;"></a>
+                      
+                  <h2 class="text_of_user" style="color:black;"><b>{{ucwords($friends->firstname)}}</b></h2>
+                   {{\Carbon\Carbon::parse($friends->created_at)->diffForHumans()}}
+                   <br>
+            <div style="margin-left:10px;">
+                       <hr>
+                    <h2 class="text_of_user">{{$friends->body}}</h2>
+                   
+                   @if($friends->image != '')
+        <?php 
+                      $p_c = $friends->count;
+                        $ex = explode(",", $friends->image);
+                      
+                     // if(count($ex) == $post->count){
+                       if($friends->count > 3){ 
+                      for ($i=0; $i <= 2; $i++) { 
+                           
+                     
+                    // foreach( explode(",", $post->image)as $images ){
+                       ?>
+
+                  <a href="/showfullimage/{{$friends->id}}" style="text-decoration: none;"> <img src="/uploads/image/{{$ex[$i]}}" class="show_multiple_image"> </a>  
+
+                   
+<?php
+  $ch = $p_c - 3;
+}?>
+<a href="/showfullimage/{{$friends->id}}" style="text-decoration: none;">
+    <img src="/uploads/image/{{$ex[$i]}}"style="border:1px solid gray; width:120px; height: 120px;position:relative; top:0px; left:10px;  margin:auto 0px; border-radius:10px;opacity:0.5;"><!-- <span class="count_number_of_friend_image">+{{$ch}}</span> -->
+ @if($ch < 9)
+       <span class="count_number_of_image">+{{$ch}}</span>
+      @else
+<span class="count_number_of_imageses">+{{$ch}}</span>
+@endif
+  </a><hr>
+<?php }
+if($friends->count <= 3 and $friends->count ==3){
+foreach( explode(",", $friends->image)as $images ){
+ ?>
+<a href="#" style="text-decoration: none;"><img src="/uploads/image/{{$images}}"  class="show_upto_three_image" ></a>
+<?php }
+}
+if($friends->count <=2 and $friends->count == 2){
+  foreach( explode(",", $friends->image)as $images ){
+ ?>
+<img src="/uploads/image/{{$images}}"  style="position: relative;width:300px;height: 300px;">
+<?php }
+}
+if($friends->count <=1 and $friends->count == 1){
+  foreach( explode(",", $friends->image)as $images ){
+ ?>
+<img src="/uploads/image/{{$images}}"  style="position: relative;   width:100%;height:100%;">
+<?php }
+}
+?>
+ 
+     @endif
+                 @if($friends->video != '')
+            <?php 
+            $p_c = $friends->count_video;
+            $exs = explode(",", $friends->video);
+            if($friends->count_video > 3){ 
+           for ($i=0; $i <= 1; $i++) { 
+            // foreach( explode(",", $post->video)as $videos ){
+            
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$exs[$i]}}" type="video/mp4">  
+    
+</video> 
+<?php
+  $chs = $p_c - 2;
+}?><a href="/showfullvideo/{{$friends->id}}"><span class="count_number_of_video"><span id="video_click" style="display: block;">click here</span><span id="count_video">+{{$chs}}</span></span></a>
+           <hr>
+          
+<?php }
+ if($friends->count_video <= 3 and $friends->count_video == 3){ 
+  foreach( explode(",", $friends->video)as $videos ){
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video>  
+<?php }
+  }
+if($friends->count_video <= 2 and $friends->count_video == 2){ 
+  foreach( explode(",", $friends->video)as $videos ){
+              ?>
+         <video width="40%" height="40%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+  if($friends->count_video <= 1 and $friends->count_video == 1){ 
+  foreach( explode(",", $friends->video)as $videos ){
+              ?>
+         <video width="100%" height="100%" controls>  
+  <source src="/uploads/video/{{$videos}}" type="video/mp4">  
+    
+</video> 
+<?php }
+  }
+      ?>
+@endif   
+</div>
+  
+                 <br>
+                 <div class="user_like_comment">
+                    <?php  $checks = DB::table('likes')->where('post_id',$friends->id)->where('user_id',Auth::user()->id)->first();
+                           if($checks== ''){ 
+
+                     ?>
+                    
+           <span class="badge liked" id="{{$friends->id}}" style="position: relative;top:0px; cursor: pointer;">Liked {{$post->getlikes($friends->id)}}</span> 
+<hr>       
+       
+         
+          <span id="{{$friends->id}}" class="btn-btn-primary likessy" data-post="{{$friends->body }}"
+          data-user="{{$friends->id}}" style="position: relative;top:0px;left:-30px;text-decoration: none;" >Like</span>   
+
+  <?php } else{ ?>
+
+                    <span class="badge liked" id="{{$friends->id}}">Liked {{$countlike->where('post_id',$friends->id)->count()}} </span>  
+                    <hr>
+                     
+                  <span id="{{$friends->id}}" class="btn-btn-primary likessy" data-post="{{$friends->body}}"  data-user="{{$friends->user_requested }}"style="position:relative;top:0px;left:-30px;">You like this post</span>                                                                                    <?php } ?>
+                  <span class="btn-danger dislike" id="{{$friends->id}}" data-type="dislike" style="position:relative;top:0px;left:-40px; ">Dislike</span> 
+                 <?php 
+             $showreplies = DB::table('replies')->where('post_id',$friends->id)->count();    
+          $count_comment = DB::table("comments")->where('post_id',$friends->id)->count();
+          $add = $showreplies + $count_comment;
+                 ?>
+                    <a href="{{url('/comment/'.$friends->id)}}"><span class="btn-btn-secondary comments">Comment {{$add}}  </span></a>
+                      
+                         <!--  Get the total number of views   -->
+                    <!--  <a href="{{url('postview/'.$post->id.'/')}}">{{$post->postview->count()}}</a> ; -->
+                    
+                  
+
+<!-- comment -->
+<form   method="post" action="{{ route('comments.store') }}" >
+                                   {{  csrf_field() }}
+             <input type="hidden" name="user_id" value="{{$friends->user_requested }}" >
+                          <input type="hidden" name="firstname" value="{{Auth::user()->firstname}}">
+                         <input type="hidden" name="lastname" value="{{Auth::user()->lastname}}">
+                        <input type="hidden" name="post_body" value="{{$friends->body}}">
+                         
+                         <input type="hidden" name="post_id" value="{{ $friends->id }}" >
+                         
+                        <div class="row" style="padding: 10px;">
+                            <div class="form-group">
+                              <span style="position:relative;top:0px">   <textarea class="form-control" name="comment" placeholder="Write something from your heart..!"></textarea></span>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 0 10px 0 10px;">
+                            <div class="form-group">
+                                <input type="submit" class="btn-btn-primary btn-lg" style="position:relative;top:0px"  value="Comment">
+                                
+                            </div>
+                        </div>
+                    </form>
+        </div>
+        </div>
+         </div>
+          </div> 
+  @endif
+                
+      @endif
+            @endforeach
+
+
+
+
+
+  @else
+           
+           <div class="col-md-6">
+         <div class="panel">
+        <div class="well">
+     
+       <h3>No yet uploading any photo</h3>
+ 
+        </div>
+         </div>
+          </div> 
+         
+          @endif
+       
+         
+</div>
+   <?php   $ch = DB::table('posts')->where('user_id',Auth::user()->id)->first();
+          if($ch == ''){ 
+          ?>
+           <div id="no_upload">
+          <div class="col-md-6">
+         <div class="panel">
+        <div class="well">
+                <span onclick="document.getElementById('no_upload').style.display='none'" class="close">&times;</span>
+        <h3>Please upload Any Thing</h3>
+ 
+        </div>
+         </div>
+          </div> 
+        </div>
+        
+        <?php } ?>
+          @endif
+        </div>
+</div>
+  <br>
+  <div id="bharat">
+    
+  </div>
+  <div id="showsearched">
+    
+  </div>
+  
+
+      
+      <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+      <script type="text/javascript" src="js/whs.js"></script>
+      <script type="text/javascript" src="{{asset('/js/likesd.js')}}"></script>
+      <script type="text/javascript" src="{{asset('/js/commented.js')}}"></script>
+      <script type="text/javascript" src="{{asset('/js/dislike.js')}}" ></script>
+      <script type="text/javascript" src="{{asset('js/message_index.js')}}"></script>   
+      <script type="text/javascript" src="{{asset('js/showlikeds.js')}}"></script>
+      <script type="text/javascript" src="{{asset('js/searched.js')}}"></script>
+       <script type="text/javascript">
+    
+    var token = '{{Session::token()}}';
+    var urlLike = "{{url('liked')}}" ;
+  var urldislike = "{{url('dislike')}}";                                                                                                                            
+</script>
+ <script type="text/javascript">
+   
+   $(document).ready(function(){
+    $('#marksasread').click(function(){
+        var s = $(this).attr('data-id');
+          alert(s);
+
+        
+       
+        
+    })
+   })
+   
+     
+
+ </script>
+</body>
+</html>
