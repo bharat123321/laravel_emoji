@@ -1,0 +1,1247 @@
+body{
+  margin:0px;
+  padding: 0px;
+}
+/*navigation*/
+.nav {
+  
+   background-color:black;
+   color: white;
+   border: 1px solid #ddd;
+   transition: .5s;
+ }
+ .nav.hide{
+  transform: translate(-100%);
+ }
+ .hellow{
+  background:lightgray;
+  height: 100%;
+ }
+  .profile_design{ 
+    position: relative;
+    top: -10px;
+    left:5px;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+  }
+  .home_design{
+    position: relative;
+    left: 100px;
+    top: 0px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background:black;
+  }
+ .add_friend_design{
+    position: relative;
+    left: 150px;
+    top:0px;
+    cursor: pointer;
+    width:50px;
+    height: 50px;
+     background: black;
+  }
+  .number_of_friend_request{
+  position:  relative;
+  left:130px;
+  top: -30px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+  text-decoration: none;
+  }
+  .number_of_notifcation{
+  position: relative;
+  left:161px;
+  top:-40px;
+   cursor: pointer;
+  font-size:19px;
+  color: red;
+  text-decoration: none;
+  box-shadow: transparent;
+  background: white;
+  border-radius: 50%;
+ align-content: center;
+  font-weight: bolder;
+  }
+  
+  .notification_design{
+    position: relative;
+    left: 180px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+ .messenger_design{
+  position: relative;
+  left: 200px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+ }
+
+.caret {
+    display: inline-block;
+    width: 10;
+    height: 10;
+    margin-left: 2px;
+    position: relative;
+     vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent
+}
+.badge{
+  display: inline-block;
+  background-color:#777;
+   color:white;
+  position: relative;
+  top: 0px;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 3px ;
+}
+ .badge:hover{
+  background-color:black;
+  color:white;
+ }
+.dropbtn{
+  list-style-type: none;
+  text-decoration: none;
+  color: white;
+  padding: 12px;
+  position: relative;
+  top: -20px;
+}
+.dropbtn:hover{
+  background: red;
+  border-radius:20px;
+}
+.show{
+  display: block;
+}
+.dropdown{
+  display: none;
+  position: absolute;
+  background: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+  color:black;
+}
+.dropdown a{
+  float: none;
+  color:black;
+  padding:12px 36px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown a:hover{
+  background: #ddd;
+}
+
+  /* From here start search design*/
+ .search{
+   text-align: right;
+  
+ }
+   .search_che{
+   width:300px;
+   box-sizing: border-box;
+   border: 2px solid #ccc;
+     border-radius: 4px;
+     font-size: 16px;
+     color: black;
+     background-image: url("/upload/image/search.jpg");
+     background-size: 30px 30px;
+     background-repeat: no-repeat;
+     background-position:5px 10px;
+     padding: 12px 20px 12px 40px;
+      -webkit-transition:width 0.4s ease-in-out;
+     transition: width 0.4s ease-in-out;
+     position: relative;
+    top:10px;
+    right: 10px; 
+}
+/* Ending search design*/
+
+ /*for full panel */
+ .panel{
+    
+    background-color:skyblue;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)
+    padding: 15px;
+    position: relative;
+    left: 200px;
+    margin:10px auto;
+    box-sizing: border-box;
+  
+ }
+ /* inside full panel we used*/
+  .well {
+     
+    min-height: 20px;
+    padding: 29px;
+    margin: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;  
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+
+    
+}
+.text_of_user{
+  font-size:calc(0.9rem + 0.9vw);
+  word-wrap: break-word;
+  position: relative;
+  top:-10px;
+ }
+ .show_multiple_image{
+  border:1px solid gray;
+   width:120px; 
+  height: 120px;
+  position:relative; 
+  top:0px; 
+  left:10px;  
+  margin:auto 0px; 
+  border-radius:10px;
+
+ }
+ .show_upto_three_image{
+  border:1px solid gray; 
+  width:220px; 
+  height: 220px;
+  position:relative;
+   top:0px;
+   left:10px;  
+  margin:auto 0px; 
+  border-radius:10px; 
+ }
+/* .count_number_of_image{
+font-size:32px;
+position: absolute;
+left: 490px;
+top: 215px;
+ color:black;
+ }*/
+ .count_number_of_image{
+  font-size:32px;
+position: relative;
+ left: -80px;
+ top: -50px;
+ color:brown;
+ }
+ .count_number_of_imageses{
+   font-size:32px;
+position: relative;
+ left: -80px;
+ top: -50px;
+ color:brown;
+ }
+
+ @media only screen and (max-width:1127px){
+  .count_number_of_imageses{
+     font-size:32px;
+    position: relative;
+    left: 420px;
+    top: -80px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:1036px){
+  .count_number_of_imageses{
+     font-size:32px;
+    position: relative;
+    left: -77px;
+    top: -50px;
+    color:brown;
+  }
+ }
+ 
+    @media only screen and (max-width:800px){
+  .count_number_of_imageses{
+     font-size:32px;
+    position: relative;
+    left: 420px;
+    top: -80px;
+    color:brown;
+  }
+ }
+@media only screen and (max-width:736px){
+  .count_number_of_imageses{
+     font-size:32px;
+    position: relative;
+    left: -77px;
+    top: -50px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:534px){
+  .count_number_of_imageses{
+     font-size:32px;
+    position: relative;
+    left: 160px;
+    top: -80px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:449px){
+  .count_number_of_imageses{
+      font-size:32px;
+    position: relative;
+    left: -77px;
+    top: -50px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:320px){
+  .count_number_of_imageses{
+      font-size:32px;
+    position: relative;
+    left: 50px;
+    top: -90px;
+    color:brown;
+  }
+ }
+
+ @media only screen and (max-width:1100px){
+  .count_number_of_image{
+     font-size:32px;
+    position: relative;
+    left: 420px;
+    top: -80px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:1036px){
+  .count_number_of_image{
+     font-size:32px;
+    position: relative;
+    left: -77px;
+    top: -50px;
+    color:brown;
+  }
+ }
+  @media only screen and (max-width:781px){
+  .count_number_of_image{
+     font-size:32px;
+    position: relative;
+    left: 420px;
+    top: -80px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:736px){
+  .count_number_of_image{
+     font-size:32px;
+    position: relative;
+    left: -77px;
+    top: -50px;
+    color:brown;
+  }
+ }
+  @media only screen and (max-width:514px){
+  .count_number_of_image{
+     font-size:32px;
+    position: relative;
+    left: 170px;
+    top: -80px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:449px){
+  .count_number_of_image{
+      font-size:32px;
+    position: relative;
+    left: -77px;
+    top: -50px;
+    color:brown;
+  }
+ }
+ @media only screen and (max-width:302px){
+  .count_number_of_image{
+      font-size:32px;
+    position: relative;
+    left: 50px;
+    top: -90px;
+    color:brown;
+  }
+ }
+ .count_number_of_friend_image{
+  font-size: 32px;
+  position: absolute;
+  left: 499px;
+  top:250px;
+ }
+ .count_number_of_video{
+  font-size: 32px;
+  position: absolute;
+  border: 1px solid gray;
+  padding-top: 50px;
+  width: 100px;
+  height: 80px;
+  background: black;
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.count_number_of_video:hover{
+   
+  background:brown;
+  color:yellow;
+  cursor: pointer;
+}
+#video_click{
+  text-align: center;
+  cursor: pointer;
+  font-size: 10px;
+}
+ 
+ .comments{
+   position: absolute;
+    
+ }
+
+
+/* width of panel and well */
+ .col-md-6{
+  width: 60%;
+ }
+
+ .col-md-4{
+  width: 40%
+ }
+ .col-md-3{
+  width: 30%;
+ }
+.col-md-2{
+  width: 20%;
+
+ }
+/*image start from here*/
+ img{
+   max-width: 100%!important;
+   border-radius: 5%;
+ }
+ .img-circle{
+  border-radius: 50%;
+ }
+ /*image end in here */
+ .image_pagination_design{
+  opacity: 0.4;
+   
+  
+ }
+/*For horizontal scroll */
+.horizontal_scroll{
+  display: flex;
+  height: 200px;
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+ scroll-behavior: smooth;
+ background-color: #333;
+   
+}
+.h_panel{
+    background-color:skyblue;
+    border: 1px solid transparent;
+    border-radius:30px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)
+    padding: 15px;
+    position: relative;
+    left: 200px;
+    margin:10px auto;
+    box-sizing: border-box;
+    margin-right:20px;
+}
+.h_well{
+  min-height: 20px;
+    padding: 29px;
+    margin: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;  
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+     
+    
+}
+/*Ending horizontal scroll*/
+
+/*Button design*/
+ .btn-btn-primary{
+  display: inline-block;
+  background-color: blue;
+  color:white;
+  padding:10px;
+    margin:10px;
+    border-radius:10px;
+    text-decoration: none;
+    cursor: pointer;
+ }
+ .btn-btn-primary:hover{
+  background: darkblue;
+ }
+ .btn-btn-secondary{
+  display: inline;
+  background-color: darkblue;
+  color:white;
+  padding:10px;
+    margin:10px 0px;
+    margin-left:-35px;
+    border-radius:10px;
+    text-decoration: none;
+    cursor: pointer;
+ }
+ .btn-danger{
+  display: inline-block;
+  background:darkred;
+  color:white;
+  cursor: pointer;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+ }
+ .btn-danger:hover{
+  background-color:brown;
+ }
+/*Ending Button desing*/
+.form-control{
+   width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #ccd0d2;
+    border-radius: 4px;
+    box-shadow: outset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+.close{
+    position: relative;
+    top: -10px;
+    float: right;
+    font-size: 41px;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 2;
+    filter: alpha(opacity=20);
+    cursor: pointer;
+}
+.model{
+  display: inline-block;
+    position: relative;
+     z-index: 1050;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+     
+}
+.modal_content{
+   position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    outline: 10;
+     
+}
+
+/*.text_deco{
+  display: inline-block;
+}*/
+
+ /*media for screen strat from here*/
+ /*  This for full panel and well and so on From here*/
+  @media only screen and (max-width: 960px){
+       
+        .panel{
+          background-color:skyblue;
+       border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)
+    padding: 15px;
+    position: relative;
+    left: 50px;
+    margin:10px auto;
+        }
+        .well {
+
+    min-height: 20px;
+    padding: 29px;
+    margin: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;  
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+
+}
+     .col-md-6{
+  width: 85%;
+ }   
+
+  }
+   @media only screen and (max-width: 600px){
+       
+        .panel{
+    background-color:skyblue;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)
+    padding: 15px;
+    position: relative;
+    left: 50px;
+    margin:10px auto;
+        }
+        .well {
+    min-height: 20px;
+    padding: 29px;
+    margin: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;  
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05)
+}
+     .col-md-6{
+
+  width: 80%;
+ }   
+
+  }
+   @media only screen and (max-width:390px){
+       
+        .panel{
+    background-color:skyblue;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)
+    padding: 15px;
+    position: relative;
+    left: 15px;
+    margin:10px auto;
+        }
+        .well {
+    min-height: 20px;
+    padding: 29px;
+    margin: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;  
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05)
+}
+     .col-md-6{
+
+  width:90%;
+ }   
+
+  }
+  /* Up to here for Full panel and well*/
+ @media only screen and (max-width: 600px)
+ {
+  .text_of_user{
+    font-size:0.8em;
+  }
+  .likessy{
+    font-size: 0.8em;
+
+  }
+  .dislike{
+    font-size: 0.8em;
+  }
+  .comments{
+    font-size: 0.8em;
+  }
+
+ }
+  @media only screen and (max-width:449px){
+  .show_multiple_image{
+      position: relative;
+      top: 0px;
+      width: 60px;
+      height: 60px;
+  }
+ }
+
+
+/* @media only screen and (max-width:1036px){
+  .count_number_of_image{
+     font-size:32px;
+    position: absolute;
+   left: 100px;
+   top:340px;
+  color:black;
+  }
+ }
+  @media only screen and (max-width:960px){
+  .count_number_of_image{
+     font-size:32px;
+    position: absolute;
+   left: 500px;
+   top:200px;
+  color:black;
+  }
+ }*/
+
+ /*@media  screen and (max-width:791px) and (min-width:752px){
+  .count_number_of_image{
+     font-size: 1.8rem;
+     position: absolute;
+     left: 500px;
+     top: 258px;
+  }
+ }*/
+ /*@media   screen and (max-width:529px) and(min-width:510px){
+   .count_number_of_image{
+    font-size: 1.6rem;
+    position: absolute;
+    left: 500px;
+   }
+ }
+  @media  screen and (max-width:509px) and (min-width:450px){
+  .count_number_of_image{
+     font-size: 1.9rem;
+     position: absolute;
+     left: 220px;
+     top: 308px;
+  }
+ }*/
+@media only screen and (max-width:1185px) {
+  .count_number_of_video{
+     font-size: 1.5rem;
+     width:90px;
+     height: 70px;
+  }
+ }
+ @media only screen and (max-width:1085px) {
+  .count_number_of_video{
+     font-size: 1.5rem;
+     width:90px;
+     height: 50px;
+  }
+ }
+ @media only screen and (max-width:720px) {
+  .count_number_of_video{
+     font-size: 1.5rem;
+     width:90px;
+     height: 40px;
+  }
+ }
+ @media only screen and (max-width:610px) {
+  .count_number_of_video{
+     font-size: 1.5rem;
+     width:90px;
+     height: 40px;
+     padding-top: 20px;
+  }
+ }
+ @media only screen and (max-width:590px) {
+  .count_number_of_video{
+     font-size: 1.5rem;
+     width:60px;
+     height: 40px;
+  }
+ }
+  @media only screen and (max-width:490px) {
+  .count_number_of_video{
+     font-size: 1.5rem;
+     width:60px;
+     height: 30px;
+  }
+ }
+ @media only screen and (max-width:400px) {
+  .count_number_of_video{
+     font-size: 1.2rem;
+     width:70px;
+     height: 30px;
+     padding-top:10px;
+
+  }
+ }
+ @media only screen and (max-width:300px) {
+  .count_number_of_video{
+     font-size: 1.1rem;
+     width:40px;
+     height: 25px;
+     padding-top:10px;
+
+  }
+ }
+@media only screen and (max-width:279px) {
+  .count_number_of_video{
+     font-size: 1rem;
+     width:40px;
+     height: 20px;
+     padding-top:8px;
+
+  }
+ }
+
+ @media  screen and (max-width:676px){
+  .show_upto_three_image{
+      position: relative;
+      width: 150px;
+      height: 150px;
+  }
+ }
+ @media  screen and (max-width:542px){
+  .show_upto_three_image{
+      position: relative;
+      width: 130px;
+      height: 130px;
+  }
+ }
+ @media  screen and (max-width:474px){
+  .show_upto_three_image{
+      position: relative;
+      width: 100px;
+      height: 100px;
+  }
+ }
+
+  @media only screen and (max-width:514px){
+  .likessy{
+    font-size: 0.7em;
+
+  }
+  .dislike{
+    font-size: 0.7em;
+  }
+  .comments{
+    font-size: 0.7em;
+  }
+ }
+   @media only screen and (max-width:514px){
+  .likessy{
+    font-size: 0.7em;
+
+  }
+  .dislike{
+    font-size: 0.7em;
+  }
+  .comments{
+    font-size: 0.7em;
+  }
+ }
+ 
+  /*This is for search bar From here */
+  @media only screen and (max-width:950px){  
+    .search_che{
+      width:10px;
+      position: relative;
+      top:0px;
+    }
+     .search_che:focus{
+      width: 50%;
+     }
+  }
+  @media only screen and (max-width:944px){  
+    .search_che{
+      width:200px;
+     
+    }
+      
+  }
+
+  /*Up to here for Search bar*/
+
+  @media only screen and (max-width:950px){
+    .h_panel{
+          background-color:skyblue;
+       border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)
+    padding: 15px;
+    position: relative;
+    left: 50px;
+    
+        }
+        .h_well {
+
+    min-height: 20px;
+    padding: 29px;
+    margin: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;  
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05)
+}
+     .col-md-2{
+  width: 90%;
+ }   
+  }
+  @media only screen and (max-width:918px ){
+   
+   .home_design{
+    position: relative;
+    left: 50px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+  .add_friend_design{
+    position: relative;
+    left: 90px;
+    cursor: pointer;
+    width:40px;
+    height: 40px;
+     
+  }
+  .number_of_friend_request{
+  position:  relative;
+  left:75px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+   
+  }
+  .number_of_notifcation{
+  position:  relative;
+  left:100px;
+  top: -20px;
+   cursor: pointer;
+  font-size:17px;
+  color: red;
+  text-decoration: none;
+  box-shadow: transparent;
+  background: skyblue;
+  border-radius: 50%;
+ align-content: center;
+  font-weight: bolder;
+  }
+ .notification_design{
+    position: relative;
+    left: 120px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  .messenger_design{
+  position: relative;
+  left: 130px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+ }
+  }
+   @media only screen and (max-width:620px ){
+   
+   .home_design{
+    position: relative;
+    left: 0px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+  .add_friend_design{
+    position: relative;
+    left: 20px;
+    cursor: pointer;
+    width:40px;
+    height: 40px;
+     
+  }
+ .number_of_friend_request{
+  position:  relative;
+  left:5px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+   
+  }
+  .number_of_notifcation{
+  position:  relative;
+  left:20px;
+  top: -25px;
+   cursor: pointer;
+  font-size:17px;
+  color: red;
+  text-decoration: none;
+  box-shadow: transparent;
+  background: skyblue;
+  border-radius: 50%;
+ align-content: center;
+  font-weight: bolder;
+  }
+ .notification_design{
+    position: relative;
+    left: 40px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+  .messenger_design{
+  position: relative;
+  left: 50px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+ }
+  }
+  @media only screen and (max-width:550px){
+    .dropbtn{
+      font-size:12px;
+  word-wrap: break-word;
+   position: relative;
+   top:0px;
+   left:-60px;
+
+    }
+  }
+  @media only screen and (max-width:505px){
+  .home_design{
+    position: relative;
+    left: -40px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+  .add_friend_design{
+    position: relative;
+    left: -20px;
+    cursor: pointer;
+    width:40px;
+    height: 40px;
+     
+  }
+ .number_of_friend_request{
+  position:  relative;
+  left:-35px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+   
+  }
+  .number_of_notifcation{
+  position:  relative;
+  left:-30px;
+  top: -25px;
+   cursor: pointer;
+  font-size:17px;
+  color: red;
+  text-decoration: none;
+  box-shadow: transparent;
+  background: skyblue;
+  border-radius: 50%;
+ align-content: center;
+  font-weight: bolder;
+  }
+ .notification_design{
+    position: relative;
+    left: -20px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+  .messenger_design{
+  position: relative;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+ }
+  }
+  @media only screen and (max-width:394px ){
+   
+   .home_design{
+    position: relative;
+    left: -40px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .add_friend_design{
+    position: relative;
+    left: -20px;
+    cursor: pointer;
+    width:30px;
+    height: 30px;
+     
+  }
+
+ .number_of_notifcation{
+  position:  relative;
+  left:-30px;
+  top: -25px;
+   cursor: pointer;
+  font-size:17px;
+  color: red;
+  text-decoration: none;
+  box-shadow: transparent;
+  background: skyblue;
+  border-radius: 50%;
+ align-content: center;
+  font-weight: bolder;
+  }
+ .notification_design{
+    position: relative;
+    left: -20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .messenger_design{
+  position: relative;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+ }
+  }
+  @media only screen and (max-width:320px ){
+  
+     .profile_design{ 
+    position: relative;
+    top: 0px;
+    left:5px;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+  }
+
+     .dropbtn{
+      font-size:12px;
+  word-wrap: break-word;
+   position: relative;
+   top:20px;
+   left:-60px;
+
+    }
+  .home_design{
+    position: relative;
+    left: -60px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .add_friend_design{
+    position: relative;
+    left: -50px;
+    cursor: pointer;
+    width:30px;
+    height: 30px;
+     
+  }
+  .number_of_friend_request{
+  position:  relative;
+  left:-65px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+   
+  }
+ .number_of_notifcation{
+  position:  relative;
+  left:-65px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+  }
+ .notification_design{
+    position: relative;
+    left: -50px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .messenger_design{
+  position: relative;
+  left: 265px;
+  top: -35px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+ }
+  }
+  @media only screen and (max-width:319px){
+    .number_of_notifcation{
+  position:  relative;
+  left:-65px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+  }
+    .messenger_design{
+  position: relative;
+  left: 265px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+ }
+  }
+   @media only screen and (max-width:316px){
+   
+    .messenger_design{
+  position: relative;
+  left: 240px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+ }
+  }
+   @media only screen and (max-width:294px ){
+   
+   .home_design{
+    position: relative;
+    left: -60px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .add_friend_design{
+    position: relative;
+    left: -50px;
+    cursor: pointer;
+    width:30px;
+    height: 30px;
+     
+  }
+  .number_of_friend_request{
+  position:  relative;
+  left:-65px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+   
+  }
+ .number_of_notifcation{
+  position:  relative;
+  left:-65px;
+  top: -25px;
+  cursor: pointer;
+  font-size:16px;
+  color: red;
+  }
+ .notification_design{
+    position: relative;
+    left: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .messenger_design{
+  position: relative;
+  left: 265px;
+  top: -35px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+ }
+  }
+    
+   
+ /*media end in here*/
